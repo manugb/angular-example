@@ -1,38 +1,42 @@
 <!doctype html>
 <html ng-app="store">
 	<head>
+		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link>
 	</head>
 	<body ng-controller="StoreController as store">
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="product in store.products">
+			<li class="list-group-item" ng-repeat="product in store.products|orderBy:'nombre'">
 				<h3>
-					{{product.name}}
-					<em class="pull-right"> {{product.price | currency}}</em>
+					{{product.nombre}}
+					<em class="pull-right"> {{product.sitio}}</em>
 				</h3>
 				<section ng-controller="PanelController as panel">
 					<ul class="nav nav-pills">
 						<li ng-class="{ active: panel.isSelected(1) }"> 
-							<a href ng-click="panel.setTab(1)"> Description</a>
+							<a href ng-click="panel.setTab(1)"> Comuna</a>
 						</li>
 						<li ng-class="{ active: panel.isSelected(2) }"> 
-							<a href ng-click="panel.setTab(2)"> Specs</a>
+							<a href ng-click="panel.setTab(2)"> Direccion</a>
 						</li>
 						<li ng-class="{ active: panel.isSelected(3) }"> 
-							<a href ng-click="panel.setTab(3)"> Reviews</a>
+							<a href ng-click="panel.setTab(3)"> Otros</a>
 						</li>
 					</ul>
 					<div class="panel" ng-show="panel.isSelected(1)">
-						<h4>Description</h4>
-						<blockquote>{{product.description}}</blockquote>
+						<h4>Comuna</h4>
+						<blockquote>{{product.comuna}}</blockquote>
 					</div>
 					<div class="panel" ng-show="panel.isSelected(2)">
-						<h4>Specifications</h4>
-						<blockquote>None yet</blockquote> 
+						<h4>Direccion</h4>
+						<blockquote>{{product.direccion}}</blockquote> 
 					</div>
 					<div class="panel" ng-show="panel.isSelected(3)">
-						<h4>Reviews</h4>
-						<blockquote>None yet</blockquote>
+						<h4>Otros</h4>
+						<blockquote>
+							<p> LAT: {{product.lat}}
+							<p> LONG: {{product.long}}
+						</blockquote>
 					</div>
 				</section>
 			</li>
