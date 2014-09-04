@@ -6,10 +6,9 @@
 
 		store.products = [];
 
-		$http.get('http://apicaba.com.ar/api/recursos/puntos-wifi-publicos').
+		$http.get('http://localhost:9000/mostrar').
 			success(function(data){
-				data.datos.shift();
-				store.products = data.datos;
+				store.products = data;
 			});
 	}]);
 

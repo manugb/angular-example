@@ -1,4 +1,3 @@
-<!doctype html>
 <html ng-app="store">
 	<head>
 		<meta charset="utf-8">
@@ -9,34 +8,16 @@
 			<li class="list-group-item" ng-repeat="product in store.products|orderBy:'nombre'">
 				<h3>
 					{{product.nombre}}
-					<em class="pull-right"> {{product.sitio}}</em>
+					<em class="pull-right"> {{product.edad}}</em>
 				</h3>
 				<section ng-controller="PanelController as panel">
 					<ul class="nav nav-pills">
 						<li ng-class="{ active: panel.isSelected(1) }"> 
-							<a href ng-click="panel.setTab(1)"> Comuna</a>
+							<a href ng-click="panel.setTab(1)"> Handicap</a>
 						</li>
-						<li ng-class="{ active: panel.isSelected(2) }"> 
-							<a href ng-click="panel.setTab(2)"> Direccion</a>
-						</li>
-						<li ng-class="{ active: panel.isSelected(3) }"> 
-							<a href ng-click="panel.setTab(3)"> Otros</a>
-						</li>
-					</ul>
 					<div class="panel" ng-show="panel.isSelected(1)">
-						<h4>Comuna</h4>
-						<blockquote>{{product.comuna}}</blockquote>
-					</div>
-					<div class="panel" ng-show="panel.isSelected(2)">
-						<h4>Direccion</h4>
-						<blockquote>{{product.direccion}}</blockquote> 
-					</div>
-					<div class="panel" ng-show="panel.isSelected(3)">
-						<h4>Otros</h4>
-						<blockquote>
-							<p> LAT: {{product.lat}}
-							<p> LONG: {{product.long}}
-						</blockquote>
+						<h4>Handicap</h4>
+						<blockquote>{{product.handicap}}</blockquote>
 					</div>
 				</section>
 			</li>
